@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+		.anim_fade_image {
+			position: absolute;
+			-webkit-transition: opacity 1s ease-in;
+		}
+		.anim_fade_image_click {
+			opacity: 0;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="testBox">
+			<img class="anim_fade_image" src="http://image.zhangxinxu.com/image/study/p/s200/ps6.jpg" />
+			<img src="http://image.zhangxinxu.com/image/study/p/s200/ps4.jpg" />
+		<div>
+	</body>
+	<script>
+		(function(){
+			var oImage = document.getElementById("testBox").getElementsByTagName("img");
+			console.log(oImage);
+			oImage[0].onclick = function(){
+				var cl = this.className;
+				if(/click/.test(cl)){
+					this.className = "anim_fade_image";
+				}
+				else{
+					this.className = "anim_fade_image anim_fade_image_click"
+				}
+			}
+		})();
+	</script>
+</html>

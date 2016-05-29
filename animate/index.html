@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>css 实例</title>
+	<link href="bower_components/animate.css/animate.css" rel="stylesheet">
+
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+	
+	<div class="img animated">
+		<img src="eg_tulip.jpg">
+	</div>
+
+	<div class="click">click me</div>
+</body>
+
+
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	// $(".click").click(function(){
+
+	// 	$(".img").addClass("rubberBand");
+		
+		
+	// });
+
+	// $('.img').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+	// 	$(".img").removeClass("rubberBand");
+	// });
+
+	$(".img").click(function(){
+
+		$(this).addClass("rubberBand");
+		
+		
+	});
+
+	$('.img').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+		$(this).removeClass("rubberBand");
+	});
+});
+
+</script>
+</html>

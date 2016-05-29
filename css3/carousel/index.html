@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<style type="text/css">
+	body {
+		background: #100000;
+		font-size: 1.5rem;
+	}
+	div#gallery {
+		-webkit-perspective: 1200px;
+		perspective: 1200px;
+		padding-top: 10%;
+		
+
+	}
+	figure#spinner {
+		-webkit-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+		height: 300px;
+		-webkit-transform-origin: 50% 50%;
+		transform-origin: 50% 50% -500px;
+		transition: 1s;
+		
+	}
+	figure#spinner img {
+		width: 40%;
+		max-width: 425px;
+		position: absolute;
+		left: 30%;
+		-webkit-transform-origin: 50% 50% -500px;
+		transform-origin: 50% 50% -500px;
+		outline: 1px solid transparent;
+		
+	}
+	figure#spinner img:nth-child(1) {
+		transform: rotateY(0deg);
+	}
+	figure#spinner img:nth-child(2) {
+		transform: rotateY(-45deg);
+	}
+	figure#spinner img:nth-child(3) {
+		transform: rotateY(-90deg);
+	}
+	figure#spinner img:nth-child(4) {
+		transform: rotateY(-135deg);
+	}
+	figure#spinner img:nth-child(5) {
+		transform: rotateY(-180deg);
+	}
+	figure#spinner img:nth-child(6) {
+		transform: rotateY(-225deg);
+	}
+	figure#spinner img:nth-child(7) {
+		transform: rotateY(-270deg);
+	}
+	figure#spinner img:nth-child(8) {
+		transform: rotateY(-315deg);
+	}
+	</style>
+</head>
+<body>
+	<div id="gallery">
+		<figure id="spinner">
+			<img src="wanaka-tree.jpg" alt>
+			<img src="still-lake.jpg" alt>
+			<img src="pink-milford-sound.jpg" alt>
+			<img src="paradise.jpg" alt>
+			<img src="morekai.jpg" alt>
+			<img src="milky-blue-lagoon.jpg" alt>
+			<img src="lake-tekapo.jpg" alt>
+			<img src="milford-sound.jpg" alt>
+		</figure>
+		<a href="#" style="float: left" onclick="galleryspin('-')">◀</a>
+		<a href="#" style="float: right" onclick="galleryspin('')">▶</a>
+	</div>
+
+	<script type="text/javascript">
+	var angle = 0;
+	function galleryspin(sign) {
+		spinner = document.querySelector("#spinner");
+		if (!sign) {
+			angle = angle + 45;
+		} else {
+			angle = angle - 45;
+		}
+		spinner.setAttribute("style","-webkit-transform: rotateY("+ angle +"deg)");
+	}
+
+	</script>
+</body>
+</html>

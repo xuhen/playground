@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+   <title>jquery 实例</title>
+   <style type="text/css">
+     
+   </style>
+   <script src="../bower_components/jquery/jquery.js"></script>
+</head>
+<body>
+  <div id="content">
+    外层div元素
+    <span>内层span元素</span>
+    外层div元素
+  </div>
+  <div id="msg"></div>
+<script type="text/javascript">
+   $(document).ready(function(){
+      $("span").bind("click", function(event){
+          var txt = $("#msg").html() + "<p>内层span元素被单击.</p>";
+          $("#msg").html(txt);
+          return false;
+      });
+
+      $("#content").bind("click", function(event){
+          var txt = $("#msg").html() + "<p>外层div元素被单击.</p>";
+          $("#msg").html(txt);
+          event.stopPropagation();
+      });
+
+      $("body").bind("click", function(){
+          var txt = $("#msg").html() + "<p>body元素被单击.</p>";
+          $("#msg").html(txt);
+      });
+   });
+  
+</script>
+
+
+</body>
+</html>

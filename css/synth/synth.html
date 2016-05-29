@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<title>合成器</title>
+	<style type="text/css">
+	body{
+		background-color: #0390AE;
+		height: 100%;
+		font-size: 0;
+	}
+	.container{
+		margin: auto;
+		width: 600px;
+	}
+	#keyboard{
+		height: 150px;
+		width: 600px;
+	}
+	#oscilloscope{
+		background-color: mediumvioletred;
+		border: 1px solid black;
+		border-bottom: 0;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<canvas id="oscilloscope" width="587" height="150"></canvas>
+		<div id="keyboard"></div>
+	</div>
+	<script src="qwerty-hancock.js"></script>
+	<script type="text/javascript">
+	var context = new AudioContext(),	
+		volume = context.createGain(),
+		squareOscillators = {},
+		sawtoothOscillators = {},
+		analyser = context.createAnalyser(),
+		waveData = new Uint8Array(analyser.frequencyBinCount),
+		canvas = document.querySelector("#oscilloscope"),
+		canvasContext = canvas.getContext("2d"),
+		canvasHeight = 150,
+		canvasWidth = 587;
+
+	volume.gain.value = 0.5;
+
+	volume.connect(analyser);
+	volume.connect(context.destination);
+
+	// osc.start(context.currentTime);
+	// osc.stop(context.currentTime + 1);
+
+	var keyboard = new QwertyHancock({
+		id: 'keyboard',
+		octaves: 2
+	});
+
+	keyboard.keyDown = function(note, frequency){
+		var squareOsc = context.createOscillator(),
+			sawtoothOsc = context.createOscillator();
+
+		squareOscillators[note] = squareOsc;
+		sawtoothOscillators[note] = sawtoothOsc;
+
+		squareOsc.connect(volume);
+		sawtoothOsc.connect(volume);
+
+		squareOsc.frequency.value = frequency;
+		sawtoothOsc.frequency.value = frequency;
+
+		squareOsc.detune.value = -10;
+		sawtoothOsc.detune.value = 10;
+		squareOsc.type = 'square';
+		sawtoothOsc.type = 'sawtooth';
+
+		squareOsc.start(context.currentTime);
+		sawtoothOsc.start(context.currentTime);
+	};
+
+	keyboard.keyUp = function(note, frequency){
+
+		squareOscillators[note].stop(context.currentTime);
+		squareOscillators[note].disconnect();
+
+		sawtoothOscillators[note].stop(context.currentTime);
+		sawtoothOscillators[note].disconnect();
+	};
+
+	var xWidth = canvasWidth / analyser.frequencyBinCount;
+	var draw = function(){
+		requestAnimationFrame(function(){
+			canvas.width = canvasWidth;
+			analyser.getByteTimeDomainData(waveData);
+
+			for (var i = 0; i < waveData.length; i++){
+				var yPosition = waveData[i] / 256,
+					xPosition = i * xWidth;
+
+				yPosition = yPosition * canvasHeight;
+				canvasContext.lineTo(xPosition, yPosition);
+			}
+			canvasContext.strokeStyle = "yellow";
+			canvasContext.stroke();
+			draw();
+		});
+	};
+	draw();
+	</script>
+</body>
+</html>

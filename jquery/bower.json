@@ -1,0 +1,20 @@
+{
+  "name": "learn jquery",
+  "version": "0.0.0",
+  "authors": [
+    "胥恒 <heng.xu@m-touch.cn>"
+  ],
+  "description": "学习jquery",
+  "main": "none",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "none"
+  ],
+  "license": "MIT",
+  "homepage": "none",
+  "dependencies": {
+    "jquery": "~1.2.6"
+  }
+}

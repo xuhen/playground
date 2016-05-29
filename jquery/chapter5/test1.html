@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+   <title>jquery 实例</title>
+   <style type="text/css">
+     .focus{
+      border: 1px solid #f00;
+      background: #fcc;
+     }
+   </style>
+   <script src="../bower_components/jquery/jquery.js"></script>
+</head>
+<body>
+  <form action="#" method="POST" id="regForm">
+    <fieldset>
+      <legend>个人基本信息</legend>
+      <div>
+        <label for="username">名称：</label>
+        <input id="username" type="text">
+      </div>
+      <div>
+        <label for="pass">密码：</label>
+        <input id="pass" type="password">
+      </div>
+      <div>
+        <label for="msg">详细信息：</label>
+        <textarea id="msg"></textarea>
+      </div>
+    </fieldset>
+  </form>
+<script type="text/javascript">
+   $(document).ready(function(){
+      $(function(){
+        $(":input").focus(function(){
+          $(this).addClass("focus");
+        }).blur(function(){
+          $(this).removeClass("focus");
+        });
+      });
+   });
+  
+</script>
+
+
+</body>
+</html>

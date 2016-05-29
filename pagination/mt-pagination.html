@@ -1,0 +1,18 @@
+<div class="pagination">
+    <ul>
+        <li ng-show="curPage != 1" class="demo"><a ng-click="first()"><span>首页</span></a></li>
+        <li ng-show="curPage == 1"><span>首页</span></li>
+        <li ng-show="curPage != 1"class="demo"><a ng-click="prev()"><span>上一页</span></a></li>
+        <li ng-show="curPage == 1"><span>上一页</span></li>
+        <li ng-repeat="page in pages" ng-class="{'demo':page.index != curPage}">
+            <span  ng-show="page.index == curPage" class=currentpage>{{page.index}}</span>
+            <a ng-show="page.index != curPage" class="demo" >
+                <span  ng-click="gotoPage(page.index-1)">{{page.index}}</span>
+            </a>
+        </li>
+        <li ng-show="isLast" ><span>下一页</span></li>
+        <li ng-show="!isLast" class="demo" ><a ng-click="next()"><span>下一页</span></a></li>
+        <li ng-show="isLast" ><span>末页</span></li>
+        <li ng-show="!isLast" class="demo" ><a ng-click="last()"><span>末页</span></a></li>
+    </ul>
+</div>

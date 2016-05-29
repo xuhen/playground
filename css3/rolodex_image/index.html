@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+	#imgdex {
+		position: relative;
+		perspective: 4000px;
+		transform-style: preserve-3d;
+		padding-top: 50%; 
+		/*border: 1px solid red;*/
+		
+	}
+	#imgdex figure, #imgdex figure figcaption { 
+		position: absolute;
+		transition: 1s ease-in-out;
+	}
+	#imgdex figure {
+		top: 0; /*left: auto;*/
+		transform-origin: left bottom;
+		width: 70%;
+	}
+	#imgdex figure figcaption {
+		bottom: 0;
+		font-size: 1.2rem;
+		height: 34px;
+		width: 100%;
+		text-align: center;
+		background: rgba(0,0,0,0.5);
+		color: white;
+		opacity: 0;
+	}
+	#imgdex figure:last-of-type {
+		transform: rotateX(5deg);
+		box-shadow: 0px 0px 200px rgba(0,0,0,0.5);
+	}
+	img{
+		width: 100%;
+	}
+	#control{
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+	
+	<div id="imgdex">
+		<figure>
+			<img src="bryce-canyon-utah.jpg" alt="Bedouin headress">
+			<figcaption>Bedouin</figcaption>
+		</figure>
+		<figure>
+			<img src="hobbiton-lake.jpg" alt="Blue-green-eyes">
+			<figcaption>Blue-green</figcaption>
+		</figure>
+		<figure>
+			<img src="utah-peak.jpg" alt="Fake eyelashes">
+			<figcaption>Dramatic Fake</figcaption>
+		</figure>
+		<figure>
+			<img src="wanaka-drowned-tree.jpg" alt="A girl in heavy snow">
+			<figcaption>Snow</figcaption>
+		</figure>
+	</div>
+	<div id="control">
+		<input type="range" min="1" onfocus="this.oldvalue = this.value;" oninput="updateImage(this);this.oldvalue = this.value;" id="ranger">
+	</div>
+
+	<script type="text/javascript">
+	var imgdex = document.getElementById('imgdex'),
+	figs = imgdex.querySelectorAll('figure'),
+	imgcount = figs.length;
+	ranger.max = imgcount;
+	ranger.value = imgcount;
+
+
+	for(var i=0;i<(imgcount-1);i++) {
+		var rotation = parseFloat(-92 + "." + (imgcount - i));
+		figs[i].style.webkitTransform = 'rotateX(' + rotation + 'deg)';
+		figs[i].style.transform = 'rotateX(' + rotation + 'deg)';
+	}
+	document.querySelector('#imgdex figure:last-child figcaption').style.opacity = 1;
+
+	function updateImage(slider) {
+		var currentimg = document.querySelector('#imgdex figure:nth-child('+slider.value+')');
+		if (slider.oldvalue !== undefined) {
+			var oldimg = document.querySelector('#imgdex figure:nth-child('+(slider.oldvalue)+')');
+		} else {
+			slider.oldvalue = imgcount;
+			var oldimg = document.querySelector('#imgdex figure:nth-child('+(slider.oldvalue)+')');
+		}
+		if (slider.value < slider.oldvalue) { 
+
+			currentimg.style.webkitTransform = 'rotateX('+slider.value+'deg)';
+			currentimg.style.transform = 'rotateX('+slider.value+'deg)';
+		} 
+		if (slider.value > slider.oldvalue) {
+
+			var rotation = parseFloat(-92 + "." + (imgcount - slider.value));
+			oldimg.style.webkitTransform = 'rotateX(' + rotation + 'deg)';
+			oldimg.style.transform = 'rotateX(' + rotation + 'deg)';
+		}
+		if (slider.value !== slider.oldvalue) {
+			currentimg.querySelector('figcaption').style.opacity = 1;
+			oldimg.querySelector('figcaption').style.opacity = 0;
+		}
+	}
+	</script>
+</body>
+</html>

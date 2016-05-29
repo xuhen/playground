@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title> Learning Bootstrap with Packt </title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initialscale=1.0">
+ <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+ <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap-theme.css">
+ <link href="css/custom.css" rel="stylesheet" media="screen">
+ <style>
+
+ </style>
+</head>
+<body>
+  <div class="container">
+    <h3>Datepicker: Moment.js</h3>
+    <div id="date"></div>
+  </div>
+
+
+  <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  <script type="text/javascript">
+  function setDateTime() {
+var date = moment().format('MMMM Do YYYY, h:mm:ss a'); // December 6th 2014, 12:55:06 pm
+// console.log(date);
+document.getElementById('date').innerHTML = date;
+}
+window.onload = function() {
+  setDateTime();
+  setInterval(setDateTime,1000);
+}
+</script>
+
+</body>
+</html>

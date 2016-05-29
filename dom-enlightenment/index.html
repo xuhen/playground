@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+	@media screen and (max-width: 600px) {
+		div#backgroundcontainer { 
+			perspective: 250px;
+		}
+	}
+	div#backgroundcontainer {
+		background-image: url(./imgs/macbook-background.jpg);
+		background-image: image-set("./imgs/macbook-background.jpg" 1x,
+			"macbook-background-2x.jpg" 2x);
+		background-size: contain;
+		background-repeat: no-repeat;
+		max-width: 750px;
+		margin: 0 auto;
+		padding-top: 53.4%;
+		position: relative;
+		perspective: 472px;
+		perspective-origin: 103% 8%;
+	}
+	#ivideo {
+		position: absolute;
+		top: 0;
+		right: 2.1%;
+		width: 41.6%;
+		padding-bottom: 21%;
+		transform: rotateX(10deg) rotateY(-7deg) translateY(74%);
+	}
+	#ivideo iframe {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+	</style>
+</head>
+<body>
+	<div id="backgroundcontainer">
+		<div id="ivideo">
+			<iframe frameborder="0" src="https://www.youtube.com/embed/V7be0UEJDdo">
+			</iframe>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+
+
+	</script>
+</body>
+</html>

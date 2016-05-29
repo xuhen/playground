@@ -1,0 +1,41 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+		@-webkit-keyframes rotate {
+		
+			100% {
+				-webkit-transform: rotate(360deg);
+			}
+		}
+		.anim_image{
+			position: absolute;
+			left: 100px;
+			top: 100px;
+			padding: 3px;
+			border: 1px solid #beceeb;
+			background-color: white;
+			-webkit-box-shadow: 0 0 8px rgba(72, 106, 170, 0.5);
+		}
+		.anim_image:hover {
+			-webkit-animation-name: rotate;
+			-webkit-animation-duration: 1s;
+			-webkit-animation-iteration-count: infinite;
+			-webkit-animation-timing-function: ease-in;
+		}
+}
+		</style>
+	</head>
+	<body>
+		<img class="anim_image" src="http://image.zhangxinxu.com/image/study/head/s180/14.jpeg" />
+	</body>
+	<script>
+		// window.onload = function(){
+		// 	alert('you are here');
+		// 	var ele = document.getElementsByClassName("anim_image")[0];
+		// 	console.log(ele);
+		// 	ele.style.animation = "rotate 1s infinite";
+		// }
+	</script>
+</html>

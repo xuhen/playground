@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+   <title>jquery 实例</title>
+   <style type="text/css">
+   ul{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+  }
+  li{
+    display: inline;
+  }
+  .selected{
+    background: green;
+    color: white;
+    padding: 8px;
+  }
+  div{
+    padding: 10px;
+  }
+  .hide{
+    display: none;
+  }
+  .hover{
+    background: blue;
+    color: white;
+    padding: 8px;
+  }
+   </style>
+   <script src="../bower_components/jquery/jquery.js"></script>
+</head>
+<body>
+  <div class="tab">
+    <div class="tab_menu">
+      <ul>
+        <li class="selected">时事</li>
+        <li>体育</li>
+        <li>娱乐</li>
+      </ul>
+    </div>
+    <div class="tab_box">
+      <div>第二是针对性。《半月谈》内容宽泛而精炼，《半月谈》一般都是有针对性、有重点性地报道和评论国内重大事宜，因此具有很强的针对性。
+    第三是实用性。公务员考试分行测和申论，申论让不少考试为难，而《半月谈》每一期的评论文章，就是一篇好申论，有些可以说是无懈可击的好论文。比如每期刊头的“半月评论”，都具有很强的思想性、逻辑性，多读多品这些文章，对自己的申论写作是有帮助的。有一些文章，甚至可以成为申论写作的模块，可用于模仿。</div>
+      <div class="hide">北京时间12月8日，科比-布莱恩特最后一次到多伦多，湖人客场以93-102不敌猛龙。科比-布莱恩特16投8中，得了21分8个篮板，路易斯-威廉姆斯首发，面对老东家得了15分，乔丹-克拉克森13分。猛龙结束二连败，本赛季完成对湖人的双杀。凯尔-洛瑞得了27分、6次助攻和7个篮板，泰伦斯-罗斯22分，德玛尔-德罗赞16分6次助攻。</div>
+      <div class="hide">整个保险箱被偷走，内有价值高达400万元的财物。此外，刘涛还晒出所住酒店的房卡，并艾特了北欧旅游局 、丹麦驻华大使馆 、外交小灵通等相关部门的官方微博。微博发出后，立刻引起网友关注。</div>
+    </div>
+  </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+   var $div_li = $("div.tab_menu ul li");
+   $div_li.click(function(){
+    $(this).addClass("selected")
+          .siblings().removeClass("selected");
+
+          var index = $div_li.index(this);
+          $("div.tab_box > div")
+                .eq(index).show()
+                .siblings().hide();
+   }).hover(function(){
+    $(this).addClass("hover");
+   },function(){
+    $(this).removeClass("hover");
+   });
+  });
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+	@keyframes slider {
+		0% { transform: translateX(0px); }
+		20% { transform: translateX(0px); }
+		25% { transform: translateX(-808px); }
+		45% { transform: translateX(-808px); }
+		50% { transform: translateX(-1616px); }
+		70% { transform: translateX(-1616px); }
+		75% { transform: translateX(-2430px); }
+		/*95% { transform: translateX(-2432px); }
+		100% { transform: translateX(0px);  }*/
+		95% { transform: translateX(-2430px); }
+		100% { transform: translateX(-3200px); }
+	}
+	header { 
+		border: 1px solid black;
+		background: #000;
+		overflow: hidden;
+		
+
+	}
+	div { 
+		width:4500px;
+		transform: translateX(-2400px);
+		animation-name:slider;
+		animation-duration:10s;
+		animation-timing-function: ease-in-out;
+		animation-iteration-count:infinite;
+	}
+	div:hover { animation-play-state:paused; }
+	header, div img {
+		width: 800px; height: 341px;
+		margin: 0;
+		padding: 0;
+	}
+	header:after {
+		content: "❚❚";
+		font-size: 150px;
+		position: absolute;
+		z-index: 12;
+		color: rgba(255,255,255, 0);
+		left: 300px; top: 80px;
+		transition: 1s all ease-in-out;
+	}
+	header:hover:after {
+		color: rgba(255,255,255, 0.6);
+	}
+
+	</style>
+</head>
+<body>
+	<header>
+		<div>
+			<img src="square-tailed-kite.jpg" alt="Square-tailed kite">
+			<img src="white-tailed-kite.jpg" alt="White-tailed kite">
+			<img src="hawk.jpg" alt="Hawk">
+			<img src="osprey.jpg" alt="Osprey">
+			<img src="square-tailed-kite.jpg" alt="Square-tailed kite">
+		</div>
+	</header>
+
+	<script type="text/javascript">
+
+
+	</script>
+</body>
+</html>

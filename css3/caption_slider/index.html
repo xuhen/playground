@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+	@keyframes slidy { 
+		0%  { left: 0%; }
+		7% { left: 0%; }
+		10% { left: -100%; }
+		17% { left: -100%; }
+		20% { left: -200%; }
+		27% { left: -200%; } 
+		30% { left: -300%; }
+		37% { left: -300%; }
+		40% { left: -400%; }
+		47% { left: -400%; }
+		50% { left: -500%; }
+		57% { left: -500%; }
+		60% { left: -600%; }
+		67% { left: -600%; }
+		70% { left: -700%; }
+		77% { left: -700%; }
+		80% { left: -800%; }
+		87% { left: -800%; }
+		90% { left: -900%; }
+		
+	}
+	@-moz-keyframes slidy /* Firefox */
+	{
+		0%  { left: 0%; }
+		7% { left: 0%; }
+		10% { left: -100%; }
+		17% { left: -100%; }
+		20% { left: -200%; }
+		27% { left: -200%; } 
+		30% { left: -300%; }
+		37% { left: -300%; }
+		40% { left: -400%; }
+		47% { left: -400%; }
+		50% { left: -500%; }
+		57% { left: -500%; }
+		60% { left: -600%; }
+		67% { left: -600%; }
+		70% { left: -700%; }
+		77% { left: -700%; }
+		80% { left: -800%; }
+		87% { left: -800%; }
+		90% { left: -900%; }
+	}
+
+	@-webkit-keyframes slidy /* Safari 和 Chrome */
+	{
+		0%  { left: 0%; }
+		7% { left: 0%; }
+		10% { left: -100%; }
+		17% { left: -100%; }
+		20% { left: -200%; }
+		27% { left: -200%; } 
+		30% { left: -300%; }
+		37% { left: -300%; }
+		40% { left: -400%; }
+		47% { left: -400%; }
+		50% { left: -500%; }
+		57% { left: -500%; }
+		60% { left: -600%; }
+		67% { left: -600%; }
+		70% { left: -700%; }
+		77% { left: -700%; }
+		80% { left: -800%; }
+		87% { left: -800%; }
+		90% { left: -900%; }
+	}
+
+	@-o-keyframes slidy /* Opera */
+	{
+		0%  { left: 0%; }
+		7% { left: 0%; }
+		10% { left: -100%; }
+		17% { left: -100%; }
+		20% { left: -200%; }
+		27% { left: -200%; } 
+		30% { left: -300%; }
+		37% { left: -300%; }
+		40% { left: -400%; }
+		47% { left: -400%; }
+		50% { left: -500%; }
+		57% { left: -500%; }
+		60% { left: -600%; }
+		67% { left: -600%; }
+		70% { left: -700%; }
+		77% { left: -700%; }
+		80% { left: -800%; }
+		87% { left: -800%; }
+		90% { left: -900%; }
+	}
+	div#captioned-gallery {
+		width: 100%;
+		overflow: hidden;
+	}
+	figure { margin: 0; }
+	figure.slider {
+		position: relative;
+		width: 1000%;
+		font-size: 0;
+		animation: 40s slidy infinite; 
+		-moz-animation: 40s slidy infinite; 	/* Firefox */
+		-webkit-animation: 40s slidy infinite; 	/* Safari 和 Chrome */
+		-o-animation: 40s slidy infinite; 	/* Opera */
+	}
+	figure.slider figure { 
+		width: 10%;
+		height: auto;
+		display: inline-block;
+		position: inherit; 
+	}
+	figure.slider img {
+		width: 100%;
+		height: auto;
+	}
+	figure.slider figure figcaption {
+		position: absolute;
+		bottom: -3.5rem;
+		background: rgba(0,0,0,0.3);
+		color: #fff;
+		width: 100%;
+		font-size: 2rem;
+		padding: .6rem;
+		transition: .5s bottom; 
+	}
+	figure.slider figure:hover figcaption {
+		bottom: 0;
+	}
+	figure.slider figure:hover + figure figcaption { 
+		bottom: 0;
+	}
+	@media screen and (max-width: 500px) { 
+		figure.slider figure figcaption {
+			font-size: 1.2rem;
+		}
+	}
+	</style>
+</head>
+<body>
+	<div id="captioned-gallery">
+		<figure class="slider">
+			<figure>
+				<img src="./images/1.jpg" alt>
+				<figcaption>Mikeal Rogers</figcaption>
+			</figure>
+			<figure>
+				<img src="./images/3.jpg" alt>
+				<figcaption>云浪生</figcaption>
+			</figure>
+			<figure>
+				<img src="./images/4.jpg" alt>
+				<figcaption>Xeodou Li（李晓东）</figcaption>
+			</figure>
+			<figure>
+				<img src="./images/5.jpg" alt>
+				<figcaption>Chen Zhang（张晨）</figcaption>
+			</figure>
+			<figure>
+				<img src="./images/6.jpg" alt>
+				<figcaption>Chau Yee Cheung（张秋怡）</figcaption>
+			</figure>
+			<figure>
+				<img src="./images/7.jpg" alt>
+				<figcaption>Broad Zou（邹达）</figcaption>
+			</figure>
+			<figure>
+				<img src="./images/8.jpg" alt>
+				<figcaption>Shiya Luo（罗诗亚）</figcaption>
+			</figure>
+			<figure>
+				<img src="./images/9.jpg" alt>
+				<figcaption>Jose Miguel</figcaption>
+			</figure>
+			<figure>
+				<img src="./images/10.jpg" alt>
+				<figcaption>Alfred Sang（桑世龙）</figcaption>
+			</figure>
+			<figure>
+				<img src="./images/1.jpg" alt>
+				<figcaption>Mikeal Rogers</figcaption>
+			</figure>
+		</figure>
+	</div>
+	<script type="text/javascript">
+
+
+	</script>
+</body>
+</html>

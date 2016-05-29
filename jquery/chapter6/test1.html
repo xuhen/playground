@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+   <title>jquery 实例</title>
+   <style type="text/css">
+    h6{
+      background: green;
+      color: white;
+      padding: 10px;
+      width: 200px;
+    }
+   </style>
+   <script src="../bower_components/jquery/jquery.js"></script>
+</head>
+<body>
+  <input type="button" id="send" value="Ajax 获取" />
+  <div class="comment">已有评论：</div>
+  <div id="resText"></div>
+<script type="text/javascript">
+$(document).ready(function(){
+  $(function(){
+    $("#send").click(function(){
+      $("#resText").load("test.html h6");
+    });
+  });
+});
+ 
+</script>
+
+
+</body>
+</html>

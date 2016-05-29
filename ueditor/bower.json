@@ -1,0 +1,24 @@
+{
+  "name": "ueditor",
+  "authors": [
+    "胥恒 <heng.xu@m-touch.cn>"
+  ],
+  "description": "test editor",
+  "main": "none",
+  "moduleType": [],
+  "keywords": [
+    "editor"
+  ],
+  "license": "MIT",
+  "homepage": "none",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ueditor": "git://github.com/fex-team/ueditor.git#~1.4.3"
+  }
+}

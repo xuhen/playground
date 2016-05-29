@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+   <title>jquery 实例</title>
+   <style type="text/css">
+     
+   </style>
+   <script src="../bower_components/jquery/jquery.js"></script>
+</head>
+<body>
+  <select id="single">
+    <option>选择1号</option>
+    <option>选择2号</option>
+    <option>选择3号</option>
+  </select>
+  <select id="multiple" multiple="multiple" style="height:120px;">
+    <option selected="selected">选择1号</option>
+    <option>选择2号</option>
+    <option>选择3号</option>
+    <option>选择4号</option>
+    <option selected="selected">选择5号</option>
+  </select>
+  <input type="checkbox" value="check1"/>多选1
+  <input type="checkbox" value="check2"/>多选2
+  <input type="checkbox" value="check3"/>多选3
+  <input type="checkbox" value="check4"/>多选4
+
+  <input type="radio" value="radio1">单选1
+  <input type="radio" value="radio2">单选2
+  <input type="radio" value="radio3">单选3
+<script type="text/javascript">
+   $(document).ready(function(){
+      $("#single").val("选择2号");
+      $("#multiple").val(["选择2号","选择3号"]);
+      $(":checkbox").val(["check2","check3"]);
+      $(":radio").val(["radio2"]);
+   });
+   
+</script>
+
+
+</body>
+</html>

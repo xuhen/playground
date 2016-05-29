@@ -1,0 +1,66 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			.trans_box {
+				width: 400px;
+				margin: 20px;
+				overflow: hidden;
+			}
+			.trans_image_box {
+				width: 2000px;
+				height: 300px;
+				-webkit-transition: all 1s ease-in-out;
+				border: 3px solid blue;
+			}
+			.trans_image {
+				width: 400px;
+				float: left;
+				border: 1px solid red;
+			}
+			.trans_image_trigger {
+				padding-top: 10px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="trans_box">
+			<div id="transImageBox" class="trans_image_box">
+				<img class="trans_image" src="http://image.zhangxinxu.com/image/study/p/s500/ps1.jpg" />
+				<img class="trans_image" src="http://image.zhangxinxu.com/image/study/p/s500/ps2.jpg" />
+				<img class="trans_image" src="http://image.zhangxinxu.com/image/study/p/s500/ps3.jpg" />
+				<img class="trans_image" src="http://image.zhangxinxu.com/image/study/p/s500/ps4.jpg" />
+			</div>
+			<div id="transImageTrigger" class="trans_image_trigger">
+				<a href="#1">pic1</a>
+				<a href="#2">pic2</a>
+				<a href="#3">pic3</a>
+				<a href="#4">pic4</a>
+			</div>
+		</div>
+	</body>
+	
+	<script>
+		(function(){
+			var $ = function(id){
+				return document.getElementById(id);
+			};
+			var oBox = $("transImageBox"),
+				oTrigger = $("transImageTrigger").getElementsByTagName("a"),
+				lTrigger = oTrigger.length;
+
+				if(oBox && lTrigger) {
+					for(var i = 0; i<lTrigger; i++) {
+						oTrigger[i].onclick = function(){
+							console.log(this.href);
+							var index = Number(this.href.replace(/.*#/g, "")) || 1;
+							oBox.style.marginLeft = (1-index) * 400 + "px";
+							return false;
+						}
+					}
+				}
+		})();
+	</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<style type="text/css">
+.HolyGrail {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+header, footer {
+	flex: 1;
+}
+.HolyGrail-body {
+	display: flex;
+	flex: 1;
+}
+.HolyGrail-content {
+	flex: 1;
+}
+.HolyGrail-nav, .HolyGrail-ads {
+	flex: 0 0 12em;
+}
+.HolyGrail-nav {
+	order: -1;
+}
+div {
+	border: 1px solid red;
+}
+@media (max-width: 768px) {
+  .HolyGrail-body {
+    flex-direction: column;
+    flex: 1;
+  }
+  .HolyGrail-nav,
+  .HolyGrail-ads,
+  .HolyGrail-content {
+    flex: auto;
+  }
+}
+</style>
+</head>
+<body class="HolyGrail">
+	<header>Header</header>
+	<div class="HolyGrail-body">
+		<div class="HolyGrail-content">#center</div>
+		<div class="HolyGrail-nav">#left</div>
+		<div class="HolyGrail-ads">#right</div>
+	</div>
+	<footer>#footer</footer>
+</body>
+</html>

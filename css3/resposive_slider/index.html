@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+	div#slider {
+		width: 100%;
+		max-width: 1000px;
+		overflow: hidden;
+	}
+	div#slider figure {
+		position: relative;
+		width: 500%;
+		margin: 0;
+		padding: 0;
+		font-size: 0;
+		text-align: left;
+		animation: 30s slidy infinite;  
+	}
+	div#slider figure img {
+		width: 20%;
+		height: auto;
+		float: left;
+	}
+	@keyframes slidy { 
+		0%  { left: 0%; }
+		20% { left: 0%; }
+		25% { left: -100%; }
+		45% { left: -100%; }
+		50% { left: -200%; }
+		70% { left: -200%; } 
+		75% { left: -300%; }
+		95% { left: -300%; }
+		100% { left: -400%; } 
+	}
+	</style>
+</head>
+<body>
+	<div id="slider">
+		<figure>
+			<img src="austin-fireworks.jpg" alt>
+			<img src="taj-mahal.jpg" alt>
+			<img src="ibiza.jpg" alt>
+			<img src="ankor-wat.jpg" alt>
+			<img src="austin-fireworks.jpg" alt>
+		</figure>
+	</div>
+
+	<script type="text/javascript">
+
+
+	</script>
+</body>
+</html>

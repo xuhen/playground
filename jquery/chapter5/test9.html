@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+   <title>jquery 实例</title>
+   <style type="text/css">
+   .bigger, .smaller{
+    padding: 10px;
+    background: green;
+    color: white;
+   }
+   </style>
+   <script src="../bower_components/jquery/jquery.js"></script>
+</head>
+<body>
+  <div class="msg">
+    <div class="msg_caption">
+      <span class="bigger">放大</span>
+      <span class="smaller">缩小</span>
+    </div>
+    <div>
+      <p id="para">本例演示如何在 HTML 页面创建文本域。用户可以在文本域写入文本本例演示如何在 HTML 页面创建文本域。用户可以在文本域写入文本本例演示如何在 HTML 页面创建文本域。用户可以在文本域写入文本本例演示如何在 HTML 页面创建文本域。用户可以在文本域写入文本本例演示如何在 HTML 页面创建文本域。用户可以在文本域写入文本本例演示如何在 HTML 页面创建文本域。用户可以在文本域写入文本</p>
+    </div>
+  </div>
+<script type="text/javascript">
+   $(document).ready(function(){
+    $("span").click(function(){
+      var thisEle = $("#para").css("font-size");
+      var textFontSize = parseFloat(thisEle, 10);
+      var unit = thisEle.slice(-2);
+      var cName = $(this).attr("class");
+      if(cName == 'bigger'){
+        
+        textFontSize += 2;
+      } else if (cName == 'smaller'){
+        textFontSize -= 2;
+      }
+      $("#para").css("font-size", textFontSize + unit);
+    });
+  });
+
+</script>
+
+
+</body>
+</html>

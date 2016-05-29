@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+	div#emma {
+		width: 25%;
+		position: relative;
+		perspective: 1500px;
+		margin: 25% auto;
+	}
+	div#emma img {
+		position: absolute;
+		max-width: 100%;
+		-webkit-filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.6));
+		filter: url(shadow.svg#drop-shadow);
+		filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.6)); 
+		transform: rotate3d(0, 0, 0, 0deg);
+		transition-duration: 1s;
+	}
+	div#emma img#right {
+		transform-origin: top right;
+		transition-delay: 3s;
+	}
+	div#emma:hover img#right {
+		transform: rotate3d(0, 1, 0, 180deg);
+		transition-delay: 0s;
+	}
+	div#emma img#bottom {
+		transform-origin: center bottom;
+		transition-delay: 2.5s;
+	}
+	div#emma:hover img#bottom {
+		transform: rotate3d(1, 0, 0, -178deg);
+		transition-delay: .5s;
+	}
+	div#emma img#left {
+		transform-origin: left top;
+		transition-delay: 2s;
+	}
+	div#emma:hover img#left {
+		transform: rotate3d(0, 1, 0, -178deg);
+		transition-delay: 1s;
+	}
+	div#emma img#top {
+		transform-origin: top center;
+		transition-delay: 1.5s;
+	}
+	div#emma:hover img#top {
+		transform: rotate3d(1, 0, 0, 179deg);
+		transition-delay: 1.5s;
+	}
+
+	</style>
+</head>
+<body>
+	<div id="emma">
+		<img src="emma-center.jpg" alt>
+		<img id="top" src="emma-top.jpg" alt>
+		<img id="left" src="emma-left.jpg" alt>
+		<img id="bottom" src="emma-bottom.jpg" alt>
+		<img id="right" src="emma-right.jpg" alt>
+	</div>
+
+	<script type="text/javascript">
+	
+
+	</script>
+</body>
+</html>

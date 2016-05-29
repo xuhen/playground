@@ -1,0 +1,27 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+		#allmap{width:100%;height:100%;}
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=2dWSDz0Id2DUXGtFTTpGM9Rc"></script>
+	<title>根据关键字本地搜索</title>
+</head>
+<body>
+	<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");          
+	map.centerAndZoom(new BMap.Point(116.404, 39.915), 15);
+	var local = new BMap.LocalSearch(map, {
+		renderOptions:{map: map},
+      	pageCapacity:24
+	});
+	local.search("地铁站");
+	var mapStyle={  style : "pink" }  
+	map.setMapStyle(mapStyle);
+</script>

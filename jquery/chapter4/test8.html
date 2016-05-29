@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+   <title>jquery 实例</title>
+   <style type="text/css">
+     
+   </style>
+   <script src="../bower_components/jquery/jquery.js"></script>
+</head>
+<body>
+  <div id="panel">
+    <h5 class="head">title</h5>
+    <div class="content">谷歌是非常好用的搜索工具，程序员可以借助谷歌、谷歌API，chrome商店，Gmail和youtube 等多种工具来帮助自己。在大陆不幸被“墙”了。在这里介绍一种通过修改host的方式来访问谷歌。</div>
+  </div>
+<script type="text/javascript">
+   $(document).ready(function(){
+      $("#panel h5.head").click(function(){
+        $(this).next("div.content").fadeTo(600, 0.2);
+      });
+   });
+  
+</script>
+
+
+</body>
+</html>

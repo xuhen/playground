@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <script type="text/javascript">
+
+    function getStyle(oElm, strCssRule){
+        var strValue = "";
+        if(document.defaultView && document.defaultView.getComputedStyle){
+            strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
+        }
+        else if(oElm.currentStyle){
+            strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1){
+                return p1.toUpperCase();
+            });
+            strValue = oElm.currentStyle[strCssRule];
+        }
+        return strValue;
+    }
+
+    function pageloader(){
+// get sizes of boxes
+var leftys=document.getElementById('left').getElementsByTagName('td');
+var lefty=leftys[0];
+var barys=document.getElementById('topbar').getElementsByTagName('td');
+var bary=barys[0];
+var boxys=document.getElementById('topleft').getElementsByTagName('td');
+var boxy=boxys[0];
+var leftwidth=lefty.offsetWidth;
+var topheight=bary.offsetHeight;
+var boxwidth=boxy.offsetWidth;
+var boxheight=boxy.offsetHeight;
+if(topheight>boxheight){
+    var newtopheight=topheight;
+    var newinnerheight=bary.clientHeight-parseInt(getStyle(bary, "padding-top"))-parseInt(getStyle(bary, "padding-bottom"));
+}else{
+    var newtopheight=boxheight;
+    var newinnerheight=boxy.clientHeight-parseInt(getStyle(boxy, "padding-top"))-parseInt(getStyle(boxy, "padding-bottom"));
+}
+// set new width for left column
+if(leftwidth>boxwidth){
+    var newleftwidth=leftwidth;
+    var newinnerwidth=lefty.clientWidth-parseInt(getStyle(lefty, "padding-left"))-parseInt(getStyle(lefty, "padding-right"));
+}else{
+    var newleftwidth=boxwidth;
+    var newinnerwidth=boxy.clientWidth-parseInt(getStyle(boxy, "padding-left"))-parseInt(getStyle(boxy, "padding-right"));
+}
+// apply widths and heights and margins
+// alert ("newleftwidth: "+newleftwidth+" newtopheight: "+newtopheight+"\nnewinnerheight: "+newinnerheight+" newinnerwidth: "+newinnerwidth);
+boxy.style.height=newinnerheight+'px';
+bary.style.height=newinnerheight+'px';
+boxy.style.width=newinnerwidth+'px';
+lefty.style.width=newinnerwidth+'px';
+document.getElementById('left').style.marginTop=newtopheight+'px';
+document.getElementById('topbar').style.marginLeft=newleftwidth+'px';
+document.getElementById('right').style.marginLeft=newleftwidth+'px';
+document.getElementById('right').style.marginTop=newtopheight+'px';
+
+// fix column widths and rowheights
+colsync();
+rowsync();
+
+calcright();
+// alert ("leftwidth: "+newleftwidth+" topheight: "+newtopheight);
+
+}
+
+function scrolling(){
+    if (window.pageXoffset) {
+        var xscroll=window.pageXoffset;
+    } else if (document.body.scrollLeft) {
+        var xscroll=document.body.scrollLeft;
+    } else if (document.body.parentElement.scrollLeft) {
+        var xscroll=document.body.parentElement.scrollLeft;
+    } else if (document.body.parentNode.scrollLeft) {
+        var xscroll=document.body.parentNode.scrollLeft;
+    } else {
+        var xscroll=0;
+    }
+    if (window.pageYoffset) {
+        var yscroll=window.pageYOffset;
+    } else if (document.body.scrollTop) {
+        var yscroll=document.body.scrollTop;
+    } else if (document.body.parentElement.scrollTop) {
+        var yscroll=document.body.parentElement.scrollTop;
+    } else if (document.body.parentNode.scrollTop) {
+        var yscroll=document.body.parentNode.scrollTop;
+    } else {
+        var yscroll=0;
+    }
+    var leftwidth=document.getElementById('left').offsetWidth;
+    var topheight=document.getElementById('topbar').offsetHeight;
+    var newleftmargin=leftwidth-xscroll;
+    var newtopmargin=topheight-yscroll;
+    document.getElementById('left').style.top=-yscroll+'px';
+    document.getElementById('topbar').style.left=-xscroll+'px';
+}
+
+function info(){
+}
+
+function calcright(){
+// resize page to shrink to fit
+var rchildrenr = document.getElementById('right').getElementsByTagName('tr');
+var rchildrend = rchildrenr[1].getElementsByTagName('td');
+var rcols = rchildrend.length;
+var rsum = 0;
+for (i=0;i<rchildrend.length;i++) {
+    rsum = rchildrend[i].offsetWidth;
+}
+document.getElementById('topbar').style.width=rchildrenr[1].offsetWidth+'px';
+document.getElementById('right').style.width=rchildrenr[1].offsetWidth+'px';
+}
+
+function colsync(){
+    var topcells = document.getElementById('topbar').getElementsByTagName('td');
+    var rightrows = document.getElementById('right').getElementsByTagName('tr');
+    var rightcells = rightrows[1].getElementsByTagName('td');
+    var mypads=0;
+    for (i=0;i<topcells.length;i++) {
+        if (topcells[i].offsetWidth>rightcells[i].offsetWidth) {
+            mypads=parseInt(getStyle(rightcells[i], "padding-left"))+parseInt(getStyle(rightcells[i], "padding-right"));
+            rightcells[i].style.width=topcells[i].clientWidth-mypads+'px';
+        }else{
+            mypads=parseInt(getStyle(topcells[i], "padding-left"))+parseInt(getStyle(topcells[i], "padding-right"));
+            topcells[i].style.width=rightcells[i].clientWidth-mypads+'px';
+        }
+    }
+}
+
+function rowsync(){
+    var leftcells = document.getElementById('left').getElementsByTagName('td');
+    var rightrows = document.getElementById('right').getElementsByTagName('tr');
+    var mypads=0;
+    for (i=0;i<leftcells.length;i++) {
+        rightcells=rightrows[i].getElementsByTagName('td');
+        if (leftcells[i].offsetHeight>rightcells[i].offsetHeight) {
+            mypads=parseInt(getStyle(rightcells[i], "padding-top"))+parseInt(getStyle(rightcells[i], "padding-bottom"));
+            rightcells[i].style.height=leftcells[i].clientHeight-mypads+'px';
+// if (i==1) alert (leftcells[i].clientHeight);
+}else{
+    mypads=parseInt(getStyle(leftcells[i], "padding-top"))+parseInt(getStyle(leftcells[i], "padding-bottom"));
+    leftcells[i].style.height=rightcells[i].clientHeight-mypads+'px';
+// if (i==1) alert (leftcells[i].clientHeight);
+}
+}
+}
+
+window.onscroll = scrolling;
+
+</script>
+
+<style>
+body{ margin:0; }
+div{ border:none; }
+.left{ position:fixed; background-color:White; z-index:0;}
+.topleft{ position:fixed; background-color:White; z-index:1;}
+.topbar{ position:fixed; background-color:White; width:1000000px; z-index:0;}
+.right{ position:absolute; margin-left:50px; width:1000000px; z-index:-1;}
+table{ border:none; border-spacing:0px;}
+td{ border:solid; border-width:1px; width:5px; padding:2px; vertical-align:top; text-align:center;}
+tr{ height:5px; }
+
+</style>
+
+</head>
+<body onload='pageloader();'> 
+
+    <div name=topleft id=topleft class=topleft onclick=info(); >
+        <table id=tabletable>
+            <tr><td>Fixed Block</td></tr>
+        </table>
+    </div>
+
+    <div name=left id=left class=left>
+        <table>
+            <tr><td>Row-0</td></tr>
+            <tr><td>Row-1</td></tr>
+            <tr><td>Row-2</td></tr>
+            <tr><td>Row-3</td></tr>
+            <tr><td>Row-4</td></tr>
+            <tr><td>Row-5</td></tr>
+            <tr><td>Row-6</td></tr>
+            <tr><td>Row-7</td></tr>
+            <tr><td>Row-8</td></tr>
+            <tr><td>Row-9</td></tr>
+        </table>
+    </div>
+
+    <div name=topbar id=topbar class=topbar>
+        <table>
+            <tr>
+                <td>Cola</td>
+                <td>Colb</td>
+                <td>Colc</td>
+                <td>Cold</td>
+                <td>Cole</td>
+                <td>Colf</td>
+                <td>Colg</td>
+                <td>Colh</td>
+                <td>Coli</td>
+                <td>Colj</td>
+            </tr>
+        </table>
+    </div>
+
+    <div name=right id=right class=right>
+        <table>
+            <tr>
+                <td>0</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+            </tr>
+            <tr>
+                <td>30</td>
+                <td>31</td>
+                <td>32</td>
+                <td>33</td>
+                <td>34</td>
+                <td>35</td>
+                <td>36</td>
+                <td>37</td>
+                <td>38</td>
+                <td>39</td>
+            </tr>
+            <tr>
+                <td>40</td>
+                <td>41</td>
+                <td>42</td>
+                <td>43</td>
+                <td>44</td>
+                <td>45</td>
+                <td>46</td>
+                <td>47</td>
+                <td>48</td>
+                <td>49</td>
+            </tr>
+            <tr>
+                <td>50</td>
+                <td>51</td>
+                <td>52</td>
+                <td>53</td>
+                <td>54</td>
+                <td>55</td>
+                <td>56</td>
+                <td>57</td>
+                <td>58</td>
+                <td>59</td>
+            </tr>
+            <tr>
+                <td>60</td>
+                <td>61</td>
+                <td>62</td>
+                <td>63</td>
+                <td>64</td>
+                <td>65</td>
+                <td>66</td>
+                <td>67</td>
+                <td>68</td>
+                <td>69</td>
+            </tr>
+            <tr>
+                <td>70</td>
+                <td>71</td>
+                <td>72</td>
+                <td>73</td>
+                <td>74</td>
+                <td>75</td>
+                <td>76</td>
+                <td>77</td>
+                <td>78</td>
+                <td>79</td>
+            </tr>
+            <tr>
+                <td>80</td>
+                <td>81</td>
+                <td>82</td>
+                <td>83</td>
+                <td>84</td>
+                <td>85</td>
+                <td>86</td>
+                <td>87</td>
+                <td>88</td>
+                <td>89</td>
+            </tr>
+            <tr>
+                <td>90</td>
+                <td>91</td>
+                <td>92</td>
+                <td>93</td>
+                <td>94</td>
+                <td>95</td>
+                <td>96</td>
+                <td>97</td>
+                <td>98</td>
+                <td>99</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

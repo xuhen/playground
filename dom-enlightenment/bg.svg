@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+	width="100" height="100" fill-opacity=".25" >
+	<rect x="50" width="50" height="50" />
+	<rect y="50" width="50" height="50" />
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <defs>
+        <clipPath id="clipPath">
+            <text x="10" y="50" style="font-size: 20px;">一步之遥</text>
+        </clipPath>
+    </defs>
+    <g style="clip-path: url(#clipPath);">
+        <circle cx="60" cy="60" r="50" fill="#34538b" />
+        <rect x="0" y="0" width="60" height="90" style="fill:#cd0000;"/>
+    </g>
+</svg>
