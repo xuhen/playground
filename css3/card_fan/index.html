@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+	div#cardfan {
+		width: 300px;
+		height: 201px;
+		margin: 100px auto;
+	}
+	div#cardfan img {
+		width: 300px;
+		height: 201px;
+		border: 18px solid #ffe;
+		box-shadow: 6px 6px 3px rgba(0, 0, 0, 0.2);
+		position: absolute;
+		transform-origin: center 600px;
+		transition: all 1.5s linear;
+	}
+	div#cardfan:hover img:first-child {
+		transform: rotate(30deg);
+		-webkit-backface-visibility: hidden;
+	}
+	div#cardfan:hover img:last-child {
+		transform: rotate(-30deg);
+		-webkit-backface-visibility: hidden;
+	}
+	</style>
+</head>
+<body>
+	<div id="cardfan">
+		<img src="bike.jpg" alt="Zen">
+		<img src="roma.jpg" alt="Matera, Italy">
+		<img src="florence.jpg" alt="Tivoli, Italy">
+	</div>
+	<script type="text/javascript">
+
+
+	</script>
+</body>
+</html>

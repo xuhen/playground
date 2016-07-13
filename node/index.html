@@ -1,24 +1,41 @@
 <html>
 <head>
-	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-	<script>
-  // client code here
-  var counter = 0;
-  var poll = function() {
-  	$.getJSON('/poll/'+counter, function(response) {
-  		counter = response.count;
-  		var elem = $('#output');
-  		elem.text(elem.text() + response.append);
-  		poll();
-  	});
-  }
-  poll();
-  </script>
+	
+	
 </head>
 <body>
-	<!-- <h1>xu heng</h1> -->
-	<textarea id="output" style="width: 100%; height: 100%;">
+	
+	<textarea id="output">
 
 	</textarea>
+
+  <script>
+
+  var url = "http://pic.nipic.com/2007-10-20/2007102012421590_2.jpg";
+  loadImage(url,
+    function onsuccess(img) {
+
+      document.body.appendChild(img);
+    },
+    function onerror(e) {
+      console.log('Error occurred while loading image');
+      console.log(e);
+    }
+    );
+
+
+  function loadImage(url, success, error) {
+    var img = new Image();
+    img.src = url;
+    img.onload = function () {
+      success(img);
+    };
+    img.onerror = function (e) {
+      error(e);
+    };
+  }
+
+
+  </script>
 </body>
 </html>

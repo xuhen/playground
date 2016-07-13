@@ -1,3 +1,6 @@
-import {firstName, lastName, year} from './profile';
+var tmp = 123;
 
-console.log(firstName);
+if (true) {
+  tmp = 'abc'; // ReferenceError
+  let tmp;
+}

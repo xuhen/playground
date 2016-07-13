@@ -1,0 +1,6 @@
+.container .style a {
+font-weight: bold;
+}
+#id .example {
+@extend a;
+}
