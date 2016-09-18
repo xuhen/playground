@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS Cookbook</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	#slidy-container {
+		width: 100%;
+		overflow: hidden;
+	}
+	.img{
+
+	}
+	</style>
+</head>
+<body>
+	<div id="slidy-container">
+		<figure id="slidy">
+			<img class="img" src="bryce-canyon-utah.jpg" alt>
+			<img class="img" src="hobbiton-lake.jpg" alt>
+			<img class="img" src="utah-peak.jpg" alt>
+			<img class="img" src="wanaka-drowned-tree.jpg" alt>
+
+			<img class="img" src="bryce-canyon-utah.jpg" alt>
+		</figure>
+	</div>
+	<script type="text/javascript">
+	var timeOnSlide = 3,
+	timeBetweenSlides = 1,
+	slidy = document.getElementById("slidy");
+	
+	var imgCount = 5,
+	totalTime = (timeOnSlide + timeBetweenSlides) * (imgCount - 1),
+	slideRatio = (timeOnSlide / totalTime)*100,
+	moveRatio = (timeBetweenSlides / totalTime)*100,
+	basePercentage = 100/imgCount,
+	position = 0,
+	css = document.createElement("style");
+
+	css.type = "text/css";
+	css.innerHTML += "#slidy { text-align: left; margin: 0; font-size: 0; 		position: relative; width: " + (imgCount * 100) + "%;  }";
+	css.innerHTML += "#slidy img { float: left; width: " + basePercentage + "%; }";
+	css.innerHTML += "@"+"keyframes slidy {";
+	for (i=0;i<(imgCount-1); i++) {
+		position+= slideRatio;
+		css.innerHTML += position+"% { left: -"+(i * 100)+"%; }";
+		position += moveRatio;
+		css.innerHTML += position+"% { left: -"+((i+1) * 100)+"%; }";
+	}
+	css.innerHTML += "}";
+	css.innerHTML += "#slidy { left: 0%; "+"transform: translate3d(0,0,0); "+"animation: "+totalTime+"s slidy infinite; }";
+	document.body.appendChild(css);
+
+	console.log(imgCount);
+	</script>
+</body>
+</html>
