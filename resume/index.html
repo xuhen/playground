@@ -17,7 +17,7 @@
 		src: url('fonts/fzltxh_GBK.ttf');
 	}
 	body {
-		font-family: fzltxh;
+		/*font-family: fzltxh;*/
 		font-size: 16px;
 		background-color:#556;
 		background-image: linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
@@ -91,6 +91,22 @@
 	.contact li {
 		margin-top: 20px;
 	}
+	@keyframes typing {
+		from { width: 0 }
+	}
+	@keyframes caret {
+		50% { border-color: transparent; }
+	}
+	.header  .career {
+		display: inline-block;
+		width: 20ch;
+		animation: typing 6s steps(10) 3,
+		caret 1s steps(1) infinite;
+		overflow: hidden;
+		white-space: nowrap;
+		border-right: .05em solid;
+		font-family: "monospace";
+	}
 	</style>
 </head>
 <body>
@@ -98,7 +114,9 @@
 		
 		<a href="#" class="avatar"></a>
 		<div>姓名：胥恒</div>
-		<div>职业：前端开发工程师</div>
+		<div>
+			<div class="career">职业：前端开发工程师</div>
+		</div>
 		<div>公司：北京欧德思科技有限公司</div>
 		<div>毕业学校：天津科技大学</div>
 	</div>
@@ -153,7 +171,7 @@
 				<li>Email: xuhengberkeley@163.com</li>
 				<li><a href="https://github.com/xuhen">GitHub</a></li>
 			</ul>
-			<div class="copyright">Built by 胥恒（Copyright Reserved）</div>
+			<div class="copyright">Built by 胥恒 with ♥（© Copyright Reserved）</div>
 		</main>
 	</div>
 	<script>

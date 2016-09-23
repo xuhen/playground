@@ -4,54 +4,86 @@
 	<title>CSS Cookbook</title>
 	<meta charset="utf-8">
 	<style type="text/css">
-	#slidy-container {
-		width: 100%;
-		overflow: hidden;
+	body {
+		background: #E8EADD;
+		color: #3C323A;
+		padding: 20px; 
+		border: 1px solid red;
 	}
-	.img{
-
+	.wrapper {
+		width: 1024px; /* Fallback for browsers that don't support the calc() function */
+		width: -moz-calc(100% - 40px);
+		width: -webkit-calc(100% - 40px);
+		width: calc(100% - 40px);
+		margin: auto; 
+		border: 1px solid blue;
+	}
+	#header {
+		background: #f60;
+		padding: 20px;
+		width: 984px;/*Fallback for browsers that don't support the calc() function*/
+		width: -moz-calc(100% - 40px);
+		width: -webkit-calc(100% - 40px);
+		width: calc(100% - 40px);
+	}
+	#footer {
+		clear:both;
+		background: #000;
+		padding: 20px;
+		color: #fff;
+		width: 984px;/* Fallback for browsers that don't support the calc() function */
+		width: -moz-calc(100% - 40px);
+		width: -webkit-calc(100% - 40px);
+		width: calc(100% - 40px);
+	}
+	#main {
+		border: 8px solid #B8C172;
+		float: left;
+		margin-bottom: 20px;
+		margin-right: 20px;
+		padding: 20px;
+		width: 704px; /* Fallback for browsers that don't support the calc() function */
+		width: -moz-calc(75% - 20px * 2 - 8px * 2);
+		width: -webkit-calc(75% - 20px * 2 - 8px * 2);
+		width: calc(75% - 20px * 2 - 8px * 2); 
+	}
+	#accessory {
+		border: 8px solid #B8C172;
+		float: right;
+		padding: 10px;
+		width: 208px; /* Fallback for browsers that don't support the calc() function */
+		width: -moz-calc(25% - 10px * 2 - 8px * 2 - 20px);
+		width: -webkit-calc(25% - 10px * 2 - 8px * 2 - 20px);
+		width: calc(25% - 10px * 2 - 8px * 2 - 20px);
 	}
 	</style>
 </head>
 <body>
-	<div id="slidy-container">
-		<figure id="slidy">
-			<img class="img" src="bryce-canyon-utah.jpg" alt>
-			<img class="img" src="hobbiton-lake.jpg" alt>
-			<img class="img" src="utah-peak.jpg" alt>
-			<img class="img" src="wanaka-drowned-tree.jpg" alt>
-
-			<img class="img" src="bryce-canyon-utah.jpg" alt>
-		</figure>
-	</div>
-	<script type="text/javascript">
-	var timeOnSlide = 3,
-	timeBetweenSlides = 1,
-	slidy = document.getElementById("slidy");
 	
-	var imgCount = 5,
-	totalTime = (timeOnSlide + timeBetweenSlides) * (imgCount - 1),
-	slideRatio = (timeOnSlide / totalTime)*100,
-	moveRatio = (timeBetweenSlides / totalTime)*100,
-	basePercentage = 100/imgCount,
-	position = 0,
-	css = document.createElement("style");
+	
+	
+	<div class="wrapper">
+		<div id="header">
+			<h1>CSS3 calc() Function</h1>
+		</div>
+		<div id="main">
+			<h1>Far far away…</h1>
+			<p>Far far away, behind the word mountains…</p>
+		</div>
 
-	css.type = "text/css";
-	css.innerHTML += "#slidy { text-align: left; margin: 0; font-size: 0; 		position: relative; width: " + (imgCount * 100) + "%;  }";
-	css.innerHTML += "#slidy img { float: left; width: " + basePercentage + "%; }";
-	css.innerHTML += "@"+"keyframes slidy {";
-	for (i=0;i<(imgCount-1); i++) {
-		position+= slideRatio;
-		css.innerHTML += position+"% { left: -"+(i * 100)+"%; }";
-		position += moveRatio;
-		css.innerHTML += position+"% { left: -"+((i+1) * 100)+"%; }";
-	}
-	css.innerHTML += "}";
-	css.innerHTML += "#slidy { left: 0%; "+"transform: translate3d(0,0,0); "+"animation: "+totalTime+"s slidy infinite; }";
-	document.body.appendChild(css);
+		<div id="accessory">
+			<ul>
+				<li><a href="#">Far far away…</a></li>
+				<li><a href="#">Separated they live…</a></li>
+				<li><a href="#">A small river named…</a></li>
+			</ul>
+		</div>
 
-	console.log(imgCount);
-	</script>
+		<div id="footer">
+			Visit the article…
+		</div>
+
+	</div>
+	
 </body>
 </html>
