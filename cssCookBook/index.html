@@ -4,86 +4,127 @@
 	<title>CSS Cookbook</title>
 	<meta charset="utf-8">
 	<style type="text/css">
-	body {
-		background: #E8EADD;
-		color: #3C323A;
-		padding: 20px; 
-		border: 1px solid red;
+	* {
+		box-sizing: border-box;
 	}
-	.wrapper {
-		width: 1024px; /* Fallback for browsers that don't support the calc() function */
-		width: -moz-calc(100% - 40px);
-		width: -webkit-calc(100% - 40px);
-		width: calc(100% - 40px);
-		margin: auto; 
-		border: 1px solid blue;
+	body,
+	html {
+		margin:0;
+		padding:0;
+		color:#000;
+		background:#a7a09a;
+	}
+	#wrap {
+		width:750px;
+		margin:0 auto;
+		background:#99c;
 	}
 	#header {
-		background: #f60;
-		padding: 20px;
-		width: 984px;/*Fallback for browsers that don't support the calc() function*/
-		width: -moz-calc(100% - 40px);
-		width: -webkit-calc(100% - 40px);
-		width: calc(100% - 40px);
+		background:#ddd;
+		padding:5px 10px;
 	}
-	#footer {
-		clear:both;
-		background: #000;
-		padding: 20px;
-		color: #fff;
-		width: 984px;/* Fallback for browsers that don't support the calc() function */
-		width: -moz-calc(100% - 40px);
-		width: -webkit-calc(100% - 40px);
-		width: calc(100% - 40px);
+	#nav {
+		background:#c99;
+		padding:5px 10px;
 	}
 	#main {
-		border: 8px solid #B8C172;
-		float: left;
-		margin-bottom: 20px;
-		margin-right: 20px;
-		padding: 20px;
-		width: 704px; /* Fallback for browsers that don't support the calc() function */
-		width: -moz-calc(75% - 20px * 2 - 8px * 2);
-		width: -webkit-calc(75% - 20px * 2 - 8px * 2);
-		width: calc(75% - 20px * 2 - 8px * 2); 
+		background:#99c;
+		float:left;
+		width:500px;
+		padding:10px;
 	}
-	#accessory {
-		border: 8px solid #B8C172;
-		float: right;
-		padding: 10px;
-		width: 208px; /* Fallback for browsers that don't support the calc() function */
-		width: -moz-calc(25% - 10px * 2 - 8px * 2 - 20px);
-		width: -webkit-calc(25% - 10px * 2 - 8px * 2 - 20px);
-		width: calc(25% - 10px * 2 - 8px * 2 - 20px);
+	#sidebar {
+		background:#c9c;
+		float:right;
+		width:250px;
+		padding:10px;
+	}
+	#footer {
+		background:#cc9;
+		clear:both;
+		padding:5px 10px;
+	}
+	#nav ul {
+		margin:0;
+		padding:0;
+		list-style:none;
+	}
+	#nav li {
+		display:inline;
+		margin:0;
+		padding:0;
+	}
+	h1 {
+		margin:0;
+	}
+	h2 {
+		margin:0 0 1em;
+	}
+	#footer p {
+		margin:0;
+	}
+	.test {
+		display: inline-block;
+	}
+
+	.test:after {
+		content: attr(data-content);
 	}
 	</style>
 </head>
 <body>
 	
-	
-	
-	<div class="wrapper">
-		<div id="header">
-			<h1>CSS3 calc() Function</h1>
-		</div>
-		<div id="main">
-			<h1>Far far away…</h1>
-			<p>Far far away, behind the word mountains…</p>
-		</div>
-
-		<div id="accessory">
+	<div id="wrap">
+		<div id="header"><h1>Document Heading</h1></div>
+		<div id="nav">
 			<ul>
-				<li><a href="#">Far far away…</a></li>
-				<li><a href="#">Separated they live…</a></li>
-				<li><a href="#">A small river named…</a></li>
+				<li><a href="#">Option 1</a></li>
+				<li><a href="#">Option 2</a></li>
+				<li><a href="#">Option 3</a></li>
+				<li><a href="#">Option 4</a></li>
+				<li><a href="#">Option 5</a></li>
+				<li><a href="#">Option 6</a></li>
 			</ul>
 		</div>
+		<div id="main">
+			<h2>Column 1</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit Lorem ipsum dolor sit amet, consectetuer adipiscing elitLorem ipsum dolor sit amet, consectetuer adipiscing elitLorem ipsum dolor sit amet, consectetuer adipiscing elitLorem ipsum dolor sit amet, consectetuer adipiscing elitLorem ipsum dolor sit amet, consectetuer adipiscing elitLorem ipsum dolor sit amet, consectetuer adipiscing elitLorem ipsum dolor sit amet, consectetuer adipiscing elit Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris vel magna. Mauris risus nunc, tristique varius, gravida in, lacinia vel, elit. Nam ornare, felis non faucibus molestie, nulla augue adipiscing mauris, a nonummy diam ligula ut risus. Praesent varius. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 
-		<div id="footer">
-			Visit the article…
+				Nulla a lacus. Nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce pulvinar lobortis purus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec semper ipsum et urna. Ut consequat neque vitae felis. Suspendisse dapibus, magna quis pulvinar laoreet, dolor neque lacinia arcu, et luctus mi erat vestibulum sem. Mauris faucibus iaculis lacus. Aliquam nec ante in quam sollicitudin congue. Quisque congue egestas elit. Quisque viverra. Donec feugiat elementum est. Etiam vel lorem.
+
+				Aenean tempor. Mauris tortor quam, elementum eu, convallis a, semper quis, purus. Cras at tortor in purus tincidunt tristique. In hac habitasse platea dictumst. Ut eu lectus eu metus molestie iaculis. In ornare. Donec at enim vel erat tempor congue. Nullam varius. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla feugiat hendrerit risus. Integer enim velit, gravida id, sollicitudin at, consequat sit amet, leo. Fusce imperdiet condimentum velit. Phasellus nonummy interdum est. Pellentesque quam.
+
+				Aenean tempor. Mauris tortor quam, elementum eu, convallis a, semper quis, purus. Cras at tortor in purus tincidunt tristique. In hac habitasse platea dictumst. Ut eu lectus eu metus molestie iaculis. In ornare. Donec at enim vel erat tempor congue. Nullam varius. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla feugiat hendrerit risus. Integer enim velit, gravida id, sollicitudin at, consequat sit amet, leo. Fusce imperdiet condimentum velit. Phasellus nonummy interdum est. Pellentesque quam.
+
+				Nulla a lacus. Nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce pulvinar lobortis purus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec semper ipsum et urna. Ut consequat neque vitae felis. Suspendisse dapibus, magna quis pulvinar laoreet, dolor neque lacinia arcu, et luctus mi erat vestibulum sem. Mauris faucibus iaculis lacus. Aliquam nec ante in quam sollicitudin congue. Quisque congue egestas elit. Quisque viverra. Donec feugiat elementum est. Etiam vel lorem.
+			</p>
 		</div>
+		<div id="sidebar">
+			<h2>Column 1</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit Lorem ipsum dolor sit amet, consectetuer adipiscing elitLorem ipsum dolor sit amet, consectetuer adipiscing elitLorem ipsum dolor sit amet, consectetuer adipiscing elitLorem ipsum dolor sit amet, consectetuer adipiscing elitLorem ipsum dolor sit amet, consectetuer adipiscing elitLorem ipsum dolor sit amet, consectetuer adipiscing elitLorem ipsum dolor sit amet, consectetuer adipiscing elit
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris vel magna. Mauris risus nunc, tristique varius, gravida in, lacinia vel, elit. Nam ornare, felis non faucibus molestie, nulla augue adipiscing mauris, a nonummy diam ligula ut risus. Praesent varius. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 
+				
+
+				
+			</p>
+			<ul>
+				<li><a href="#">Link 1</a></li>
+				<li><a href="#">Link 2</a></li>
+				<li><a href="#">Link 3</a></li>
+				<li><a href="#">Link 4</a></li>
+			</ul>
+		</div>
+		<div id="footer">
+			<p>Footer</p>
+			<div class="test" data-content="This is the div content">test</div>​
+		</div>
 	</div>
 	
+	<script type="text/javascript">
+	alert(devicePixelRatio);
+	</script>
 </body>
 </html>
